@@ -7,8 +7,6 @@ import { observer, inject } from "@tarojs/mobx";
 @inject("counterStore")
 @observer
 class Index extends Component {
-
-
   componentWillMount() {}
 
   componentDidMount() {}
@@ -24,7 +22,7 @@ class Index extends Component {
   componentDidHide() {}
 
   config = {
-    navigationBarTitleText: "首页"
+    navigationBarTitleText: "首页",
   };
 
   increment = () => {
@@ -45,7 +43,7 @@ class Index extends Component {
   render() {
     const {
       counterStore: { counter },
-      type
+      type,
     } = this.props;
     return (
       <View className='index'>
