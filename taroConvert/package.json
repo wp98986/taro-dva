@@ -86,7 +86,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run Listlint-staged"
+      "precommit": "npm run Listlint-staged"
     }
   }
 }
