@@ -9,7 +9,9 @@
     "css": "sass"
   },
   "scripts": {
-    "precommit": "eslint src/**/*.js",
+    "precommit": "npm run lint-staged",
+    "Listlint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -75,11 +77,16 @@
     "stylelint-taro-rn": "2.2.6"
   },
   "lint-staged": {
-    "src/**/*.js":["prettier --write", "git add"]
+    "**/*.{js,jsx,less}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{js,jsx}": "npm run lint-staged:js",
+    "**/*.less": "stylelint --syntax less"
   },
   "husky": {
     "hooks": {
-      "precommit": "lint-staged"
+      "pre-commit": "npm run Listlint-staged"
     }
   }
 }
