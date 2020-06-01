@@ -9,7 +9,7 @@
     "css": "sass"
   },
   "scripts": {
-    "precommit": "npm run lint-staged",
+    "precommit": "eslint src/**/*.js",
     "Listlint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js",
     "build:weapp": "taro build --type weapp",
