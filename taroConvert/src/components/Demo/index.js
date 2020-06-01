@@ -14,6 +14,7 @@ class Index extends Component {
   componentWillUnmount() {}
 
   componentWillReact() {
+    
     console.log("componentWillReact");
   }
 
