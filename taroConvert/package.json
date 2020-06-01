@@ -70,18 +70,18 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.2.6",
-    "husky": "^4.2.5",
+    "husky": "^1.1.2",
     "lint-staged": "^8.0.4",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.2.6",
     "stylelint-taro-rn": "2.2.6"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,less}": [
+    "**/*.{js,jsx,less,scss}": [
       "prettier --write",
       "git add"
     ],
-    "src/**/*.{js,jsx}": "npm run lint-staged:js"
+    "**/*.{js,jsx}": "npm run lint-staged:js"
   },
   "husky": {
     "hooks": {
