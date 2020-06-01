@@ -45,6 +45,7 @@ class Index extends Component {
       counterStore: { counter },
       type,
     } = this.props;
+    var a = 2;
     return (
       <View className='index'>
         <text>{type}</text>
