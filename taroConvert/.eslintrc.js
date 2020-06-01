@@ -4,24 +4,25 @@ module.exports = {
     "no-unused-vars": [
       "error",
       {
-        varsIgnorePattern: "Taro",
-      },
+        varsIgnorePattern: "Taro"
+      }
     ],
     "react/jsx-filename-extension": [
       1,
       {
-        extensions: [".js", ".jsx", ".tsx"],
-      },
+        extensions: [".js", ".jsx", ".tsx"]
+      }
     ],
     "prefer-destructuring": [
       2,
       {
         object: false,
-        array: false,
-      },
+        array: false
+      }
     ],
     "no-console": [2],
     "no-alert": [2],
+    "jsx-quotes": ["error", "prefer-single"]
   },
-  parser: "babel-eslint",
+  parser: "babel-eslint"
 };

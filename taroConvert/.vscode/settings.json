@@ -1,0 +1,6 @@
+{
+    "eslint.codeAction.disableRuleComment": {
+    
+    },
+    "prettier.singleQuote": true
+}
