@@ -10,6 +10,8 @@
   },
   "scripts": {
     "precommit": "eslint",
+    "Listlint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
