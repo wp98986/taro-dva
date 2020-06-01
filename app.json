@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"    
+    "pages/homepage/homepage",
+    "pages/storeview/storelist",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,5 +11,23 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+        "pagePath": "pages/homepage/homepage",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/storeview/storelist",
+        "text": "整装"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ],
+    "backgroundColor": "#fff",
+    "color": "#7F8389",
+    "selectedColor": "#C3151B"
+  }
 }
