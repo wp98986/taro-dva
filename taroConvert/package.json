@@ -9,7 +9,7 @@
     "css": "sass"
   },
   "scripts": {
-    "precommit": "npm run lint-staged",
+    "precommit": "lint-staged",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -25,9 +25,7 @@
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch",
-    "Listlint-staged": "lint-staged",
-    "lint-staged:js": "eslint --ext .js"
+    "dev:quickapp": "npm run build:quickapp -- --watch"
   },
   "author": "",
   "license": "MIT",
@@ -77,20 +75,7 @@
     "stylelint-taro-rn": "2.2.6"
   },
   "lint-staged": {
-    "*.css": [
-      "stylelint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.scss": [
-      "stylelint --fix --syntax scss",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "src/**/*.js": "eslint"
   },
   "husky": {
     "hooks": {
