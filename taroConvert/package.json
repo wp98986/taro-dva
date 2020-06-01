@@ -75,7 +75,7 @@
     "stylelint-taro-rn": "2.2.6"
   },
   "lint-staged": {
-    "src/**/*.js": "eslint"
+    "src/**/*.js":["prettier --write", "git add"]
   },
   "husky": {
     "hooks": {
