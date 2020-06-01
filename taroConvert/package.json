@@ -77,11 +77,11 @@
     "stylelint-taro-rn": "2.2.6"
   },
   "lint-staged": {
-    "**/*.{js,jsx,less}": [
+    "src/**/*.{js,jsx,less}": [
       "prettier --write",
       "git add"
     ],
-    "**/*.{js,jsx}": "npm run lint-staged:js"
+    "src/**/*.{js,jsx}": "npm run lint-staged:js"
   },
   "husky": {
     "hooks": {
