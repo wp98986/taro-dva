@@ -1,64 +1,74 @@
-import { View, Text } from "@tarojs/components";
-import Taro from "@tarojs/taro";
-import withWeapp from "@tarojs/with-weapp";
-import Demo from "@/components/Demo";
+import { View, Text } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import { connect } from '@tarojs/redux';
+import { getGlobalData } from '@/global';
 
-import "./homepage.scss";
+import styles from './Test.module.scss';
 
-@withWeapp({
-  /**
-   * 页面的初始数据
-   */
-  data: {},
+// @withWeapp({
+//   /**
+//    * 页面的初始数据
+//    */
+//   data: {},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function() {},
+//   /**
+//    * 生命周期函数--监听页面加载
+//    */
+//   onLoad: function() {},
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {},
+//   /**
+//    * 生命周期函数--监听页面初次渲染完成
+//    */
+//   onReady: function() {},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {},
+//   /**
+//    * 生命周期函数--监听页面显示
+//    */
+//   onShow: function() {},
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {},
+//   /**
+//    * 生命周期函数--监听页面隐藏
+//    */
+//   onHide: function() {},
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {},
+//   /**
+//    * 生命周期函数--监听页面卸载
+//    */
+//   onUnload: function() {},
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {},
+//   /**
+//    * 页面相关事件处理函数--监听用户下拉动作
+//    */
+//   onPullDownRefresh: function() {},
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {},
+//   /**
+//    * 页面上拉触底事件的处理函数
+//    */
+//   onReachBottom: function() {},
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {},
-})
+//   /**
+//    * 用户点击右上角分享
+//    */
+//   onShareAppMessage: function() {},
+// })
+
+@connect(({ feeds }) => ({
+  ...feeds,
+}))
 class _C extends Taro.Component {
-  config = {};
+  componentDidMount = () => {
+    const currentInfo = getGlobalData('currentInfo');
+    if (!currentInfo) {
+      Taro.redirectTo({
+        url: '/pages/login/login',
+      });
+    }
+  };
 
   render() {
     return (
       <View>
-        <Demo></Demo>
-        <Text>pages/homepag334444</Text>
+        <Text className={styles.aaa}>pages/homepag334444</Text>
       </View>
     );
   }

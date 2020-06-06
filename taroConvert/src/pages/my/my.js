@@ -1,7 +1,6 @@
 import { Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import withWeapp from "@tarojs/with-weapp";
-import Demo from "@/components/Demo";
 
 import "./my.scss";
 
@@ -57,7 +56,6 @@ class _C extends Taro.Component {
   render() {
     return (
       <View>
-        <Demo type='my' />
         <Text>pages/my/my.wxml</Text>
       </View>
     );

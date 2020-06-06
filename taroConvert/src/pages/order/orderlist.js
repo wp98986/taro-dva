@@ -1,7 +1,7 @@
-import { Block, Text } from '@tarojs/components'
-import Taro from '@tarojs/taro'
-import withWeapp from '@tarojs/with-weapp'
-import './storelist.scss'
+import { Text } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import withWeapp from '@tarojs/with-weapp';
+import './orderlist.scss';
 
 @withWeapp({
   /**
@@ -12,7 +12,7 @@ import './storelist.scss'
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function() {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -47,14 +47,14 @@ import './storelist.scss'
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {}
+  onShareAppMessage: function() {},
 })
 class _C extends Taro.Component {
-  config = {}
+  config = {};
 
   render() {
-    return <Text>pages/store/storelist.wxml</Text>
+    return <Text>pages/store/storelist.wxml</Text>;
   }
 } // pages/store/storelist.js
 
-export default _C
+export default _C;
