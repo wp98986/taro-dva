@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-empty-label
 import 'taro-ui/dist/style/index.scss';
 import '@tarojs/async-await';
 import Taro from '@tarojs/taro';
@@ -18,7 +19,7 @@ const dvaApp = dva.createApp({
   models: models,
   onError(e, dispatch) {
     dispatch(action('sys/error', e));
-  },
+  }
 });
 const store = dvaApp.getStore();
 
@@ -91,7 +92,7 @@ const store = dvaApp.getStore();
       this.getCurrentInfo();
     }
     // 展示本地存储能力
-    var logs = Taro.getStorageSync('logs') || [];
+    const logs = Taro.getStorageSync('logs') || [];
     logs.unshift(Date.now());
     Taro.setStorageSync('logs', logs);
   },
@@ -110,6 +111,7 @@ class App extends Taro.Component {
       'pages/order/orderlist',
       'pages/my/my',
       'pages/login/login',
+      'pages/register/register',
     ],
     window: {
       backgroundTextStyle: 'light',

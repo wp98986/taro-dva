@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro';
 const baseUrl = 'https://esale.ufu100.com/';
 
 const getUrl = (url) => {
-  if (url.indexOf('://') == -1) {
+  if (url.indexOf('://') === -1) {
     url = baseUrl + url;
   }
   return url;
@@ -14,7 +14,7 @@ export default function request(opt, showLoading, ...others) {
   const openId = Taro.getStorageSync('openId');
   if (showLoading) {
     Taro.showLoading({
-      title: '加载中,请稍后...',
+      title: '请稍后...',
     });
   }
   const { param = {}, url } = opt;

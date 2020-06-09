@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Input, Form, Button } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
+import WxValidate from '@/utils/WxValidate';
 import { AtMessage } from 'taro-ui';
 
 import styles from './login.module.scss';
@@ -16,6 +17,35 @@ export default class Login extends Component {
 
   componentDidShow = () => {
     Taro.hideHomeButton();
+    this.initValidate();
+  };
+
+  initValidate() {
+    let rules = {
+      userName: {
+        required: true,
+      },
+      password: {
+        required: true,
+      },
+    };
+
+    let message = {
+      userName: {
+        required: '请填写账号',
+      },
+      password: {
+        required: '请填写密码',
+      },
+    };
+    //实例化当前的验证规则和提示消息
+    this.WxValidate = new WxValidate(rules, message);
+  }
+
+  pathToRegister = () => {
+    Taro.navigateTo({
+      url: '/pages/register/register',
+    });
   };
 
   renderTopText() {
@@ -28,8 +58,17 @@ export default class Login extends Component {
   }
 
   onSubmit(e) {
+    const formValue = e.detail.value;
+    if (!this.WxValidate.checkForm(formValue)) {
+      const error = this.WxValidate.errorList[0];
+      Taro.atMessage({
+        message: `${error.msg}`,
+        type: 'error',
+      });
+      return false;
+    }
     const { dispatch } = this.props;
-    const { userName, userPwd } = e.detail.value;
+    const { userName, userPwd } = formValue;
     const queryParam = { userName, userPwd };
     dispatch({
       type: 'login/loginHandle',
@@ -57,14 +96,13 @@ export default class Login extends Component {
           className={styles.loginInput}
           placeholderClass={styles.placeholderColor}
           name='userName'
-          type='text'
           placeholder='请输入账号'
+          required
         />
         <Input
           className={styles.loginInput}
           placeholderClass={styles.placeholderColor}
           name='userPwd'
-          title='文本'
           type='password'
           placeholder='请输登录密码'
         />
@@ -72,7 +110,9 @@ export default class Login extends Component {
         <Button FormType='submit' className={styles.loginBtn}>
           登录
         </Button>
-        <View className={styles.loginRegister}>新账户注册</View>
+        <View className={styles.loginRegister} onClick={this.pathToRegister}>
+          新账户注册
+        </View>
       </Form>
     );
   }
