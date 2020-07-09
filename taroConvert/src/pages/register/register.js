@@ -89,9 +89,7 @@ export default class Register extends Component {
     const { area } = this.state;
     const formValue = e.detail.value;
     formValue.area = area;
-    Taro.navigateTo({
-      url: '/pages/register/registerSuccess',
-    });
+    // 表单校验
     if (!this.WxValidate.checkForm(formValue)) {
       const error = this.WxValidate.errorList[0];
       Taro.atMessage({
@@ -100,20 +98,24 @@ export default class Register extends Component {
       });
       return false;
     }
+    // 正式使用时恢复本段注释
     // const { dispatch } = this.props;
     // const { userName, userPwd } = formValue;
     // const queryParam = { ...formValue };
     // console.log(queryParam);
 
     // dispatch({
-    //   type: 'login/loginHandle',
+    //   type: 'register/registerdemo',
     //   payload: queryParam,
     //   callback: (res) => {
     //     const {
     //       data: { code, message },
     //     } = res;
     //     if (code === '203') {
-    //       //
+    // 注册成功
+    Taro.navigateTo({
+      url: '/pages/register/registerSuccess',
+    });
     //     } else {
     //       Taro.atMessage({
     //         message,
@@ -125,7 +127,6 @@ export default class Register extends Component {
   }
 
   renderRegisterForm() {
-
     return (
       <Form onSubmit={this.onSubmit.bind(this)}>
         <FormItem label='企业名称'>

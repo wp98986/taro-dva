@@ -45,7 +45,7 @@ export default class Register extends Component {
         <View>ICON</View>
         <View className={styles.registerSuccessTitle}>注册成功</View>
         <View className={styles.registerSuccessText}>
-          恭喜您已成功获得“店慧”账号
+          恭喜您已成功获得“XX”账号
         </View>
         <View className={styles.registerSuccessPath}>
           <Text className={styles.registerSuccessTimer}>

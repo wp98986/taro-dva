@@ -1,7 +1,7 @@
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import { connect } from '@tarojs/redux';
-import { getGlobalData } from '@/global';
+// import { getGlobalData } from '@/global';
 
 import styles from './Test.module.scss';
 
@@ -56,11 +56,10 @@ import styles from './Test.module.scss';
   ...feeds,
 }))
 class _C extends Taro.Component {
-
-
   componentDidMount = () => {
-    const currentInfo = getGlobalData('currentInfo');
-    if (!currentInfo) {
+    // 未登录则重定向到登陆页
+    const hasLogin = Taro.getStorageSync('hasLogin');
+    if (!hasLogin) {
       Taro.redirectTo({
         url: '/pages/login/login',
       });

@@ -3,7 +3,7 @@ import { View, Input, Form, Button } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import WxValidate from '@/utils/WxValidate';
 import { AtMessage } from 'taro-ui';
-import { setGlobalData } from '@/global';
+// import { setGlobalData } from '@/global';
 
 import styles from './login.module.scss';
 
@@ -68,43 +68,45 @@ export default class Login extends Component {
       });
       return false;
     }
-    const { dispatch } = this.props;
-    const { userName, userPwd } = formValue;
-    const queryParam = { userName, userPwd };
-    dispatch({
-      type: 'login/loginHandle',
-      payload: queryParam,
-      callback: (res) => {
-        const {
-          data: { code, message },
-        } = res;
-        if (code === '203') {
-          // 获取个人信息
-          dispatch({
-            type: 'globalModel/getUserData',
-            callback: (result) => {
-              const { data } = result;
-              if (data) {
-                Taro.setStorageSync('userType', 'designer');
-                Taro.setStorageSync('isAuto', true);
-                setGlobalData('currentInfo', data);
-              } else {
-                Taro.setStorageSync('userType', 'visitor');
-                setGlobalData('currentInfo', undefined);
-              }
-            },
-          });
-          Taro.reLaunch({
-            url: '/pages/homepage/homepage',
-          });
-        } else {
-          Taro.atMessage({
-            message,
-            type: 'error',
-          });
-        }
-      },
+    // 正式使用时恢复本段注释
+    // const { dispatch } = this.props;
+    // const { userName, userPwd } = formValue;
+    // const queryParam = { userName, userPwd };
+    // dispatch({
+    //   type: 'login/loginHandle',
+    //   payload: queryParam,
+    //   callback: (res) => {
+    //     const {
+    //       data: { code, message },
+    //     } = res;
+    //     if (code === '203') {
+    //       // 获取个人信息
+    //       dispatch({
+    //         type: 'globalModel/getUserData',
+    //         callback: (result) => {
+    //           const { data } = result;
+    //           if (data) {
+    //             Taro.setStorageSync('userType', 'designer');
+    //             Taro.setStorageSync('isAuto', true);
+    //             setGlobalData('currentInfo', data);// 全局存储用户信息
+    //           } else {
+    //             Taro.setStorageSync('userType', 'visitor');
+    //             setGlobalData('currentInfo', undefined);
+    //           }
+    //         },
+    //       });
+    Taro.setStorageSync('hasLogin', true); // 模拟已登录
+    Taro.reLaunch({
+      url: '/pages/homepage/homepage',
     });
+    //     } else {
+    //       Taro.atMessage({
+    //         message,
+    //         type: 'error',
+    //       });
+    //     }
+    //   },
+    // });
   }
 
   renderLoginForm() {

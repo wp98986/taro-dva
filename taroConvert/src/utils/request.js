@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-const baseUrl = 'https://esale.ufu100.com/';
+const baseUrl = 'http://www.testrequest.com/'; // request请求的头URL,改成自己项目的URL
 
 const getUrl = (url) => {
   if (url.indexOf('://') === -1) {
