@@ -125,6 +125,7 @@ export default class Register extends Component {
   }
 
   renderRegisterForm() {
+
     return (
       <Form onSubmit={this.onSubmit.bind(this)}>
         <FormItem label='企业名称'>
