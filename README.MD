@@ -32,6 +32,6 @@ sudo npm i -g @tarojs/cli@2.2.6 --unsafe-perm=true --allow-root
 ### 用小程序导入dist目录，即可在微信开发者工具看到运行效果
 
 #### 其他
-因为这个壳子是为了给公司项目搭建的，里面也封装好了一些基本的东西，比如已经封装了request请求。加入了Eslint规范。加入了`WxValidate`表单验证，示例详见`register.js`。示例包含了请求和 另外结合公司实际业务封装了地区选择组件。全局字段的设置与获取。快速生成模板。模板文件为`template，js` 使用：`npm run tem comName`，运行后会在`page`目录下生成一个名为comName的文件夹包含了page，css,service,model。同时model目录下的`index.js`也会把刚才创建的model引入，避免手动引入的麻烦。表单验证提交和request请求发送在`login`和`register`页面做了比较详细的书写。由于没有做mock，实际使用时，按照代码描述把注释掉的代码放出来即可。 
+因为这个壳子是为了给公司项目搭建的，里面也封装好了一些基本的东西，比如已经封装了request请求。加入了Eslint规范。加入了`WxValidate`表单验证，示例详见`register.js`。示例包含了请求和 另外结合公司实际业务封装了地区选择组件。全局字段的设置与获取。快速生成模板。模板文件为`template，js` 使用：`npm run tem comName`，运行后会在`page`目录下生成一个名为comName的文件夹包含了page，css,service,model。同时model目录下的`index.js`也会把刚才创建的model引入，避免手动引入的麻烦。表单验证提交和request请求发送在`login`和`register`页面做了比较详细的书写。由于没有做mock，为了方便使用，实际使用时，按照代码描述把注释掉的代码放出来即可。 之后的写法仿照即可。
 
 ##### 有待完善的地方大家可以指出
