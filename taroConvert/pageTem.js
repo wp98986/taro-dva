@@ -56,8 +56,6 @@ import styles from './Test.module.scss';
   ...feeds,
 }))
 class _C extends Taro.Component {
-
-
   componentDidMount = () => {
     const currentInfo = getGlobalData('currentInfo');
     if (!currentInfo) {

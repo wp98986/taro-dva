@@ -3,6 +3,7 @@ import { View, Input, Form, Button } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import WxValidate from '@/utils/WxValidate';
 import { AtMessage } from 'taro-ui';
+import { setGlobalData } from '@/global';
 
 import styles from './login.module.scss';
 
@@ -25,7 +26,7 @@ export default class Login extends Component {
       userName: {
         required: true,
       },
-      password: {
+      userPwd: {
         required: true,
       },
     };
@@ -34,7 +35,7 @@ export default class Login extends Component {
       userName: {
         required: '请填写账号',
       },
-      password: {
+      userPwd: {
         required: '请填写密码',
       },
     };
@@ -78,7 +79,24 @@ export default class Login extends Component {
           data: { code, message },
         } = res;
         if (code === '203') {
-          //
+          // 获取个人信息
+          dispatch({
+            type: 'globalModel/getUserData',
+            callback: (result) => {
+              const { data } = result;
+              if (data) {
+                Taro.setStorageSync('userType', 'designer');
+                Taro.setStorageSync('isAuto', true);
+                setGlobalData('currentInfo', data);
+              } else {
+                Taro.setStorageSync('userType', 'visitor');
+                setGlobalData('currentInfo', undefined);
+              }
+            },
+          });
+          Taro.reLaunch({
+            url: '/pages/homepage/homepage',
+          });
         } else {
           Taro.atMessage({
             message,

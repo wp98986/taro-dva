@@ -1,8 +1,10 @@
-import { Text, View } from "@tarojs/components";
-import Taro from "@tarojs/taro";
-import withWeapp from "@tarojs/with-weapp";
+import { View } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import withWeapp from '@tarojs/with-weapp';
+import { AtIcon, AtAvatar, AtList, AtListItem } from 'taro-ui';
+import { getGlobalData } from '@/global';
 
-import "./my.scss";
+import styles from './my.module.scss';
 
 @withWeapp({
   /**
@@ -53,10 +55,70 @@ import "./my.scss";
 class _C extends Taro.Component {
   config = {};
 
+  pathToMyView = () => {
+    Taro.navigateTo({
+      url: '/pages/my/myinfo',
+    });
+  };
+
+  renderHeader() {
+    const currentInfo = getGlobalData('currentInfo') || {};
+    const {
+      name: userName,
+      user: { headImg } = {},
+      org: { name: orgName } = {},
+    } = currentInfo;
+    return (
+      <View className={styles.userHead} onClick={this.pathToMyView}>
+        <View className={styles.userHeadContent}>
+          <AtAvatar image={headImg} />
+          <View className={styles.userHeadName}>
+            <View>{userName}</View>
+            <View className={styles.orgName}>{orgName}</View>
+          </View>
+        </View>
+        <AtIcon value='chevron-right' />
+      </View>
+    );
+  }
+
+  renderListItem() {
+    return (
+      <AtList>
+        <AtListItem
+          title='友商列表'
+          arrow='right'
+          extraText='15'
+          onClick={this.handleClick}
+        />
+        <AtListItem
+          title='联盟列表'
+          arrow='right'
+          extraText='11'
+          onClick={this.handleClick}
+        />
+        <AtListItem
+          title='门店列表'
+          arrow='right'
+          extraText='11'
+          onClick={this.handleClick}
+        />
+        <AtListItem
+          title='店员列表'
+          arrow='right'
+          extraText='11'
+          onClick={this.handleClick}
+        />
+      </AtList>
+    );
+  }
+
   render() {
     return (
-      <View>
-        <Text>pages/my/my.wxml</Text>
+      <View className={styles.myPage}>
+        {this.renderHeader()}
+        <View>钱包</View>
+        {this.renderListItem()}
       </View>
     );
   }

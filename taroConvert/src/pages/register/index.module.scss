@@ -1,2 +1,82 @@
 .registerPage {
+  padding: 68px 85px 134px 85px;
+  .registerFormItem {
+    .registerFormLabel {
+      font-size: 28px;
+      color: #323232;
+      font-weight: bold;
+      line-height: 86px;
+    }
+  }
+  .registerInput {
+    height: 88px;
+    background-color: #f9f9f9;
+    border-radius: 44px;
+    font-size: 28px;
+    padding: 0 40px;
+  }
+  .placeholderColor {
+    color: #ccc;
+  }
+  .mobilePhneContainer {
+    height: 88px;
+    background-color: #f9f9f9;
+    border-radius: 44px;
+    font-size: 28px;
+
+    display: flex;
+    justify-content: space-between;
+    .mobilePhneInput {
+      flex: 1;
+      height: 100%;
+      line-height: 1;
+      padding: 0 40px;
+    }
+    .verificationBtn {
+      width: 200px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #323232;
+      border-radius: 44px;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      font-weight: bold;
+      font-size: 28px;
+    }
+  }
+  .registerBtn {
+    width: 580px;
+    height: 88px;
+    line-height: 88px;
+    text-align: center;
+    background-color: #323232;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0;
+    margin-top: 108px;
+    border-radius: 44px;
+    letter-spacing: 5px;
+  }
+  .registerSuccessTitle {
+    font-size: 48px;
+    color: #323232;
+    font-size: bold;
+    margin-bottom: 32px;
+  }
+  .registerSuccessText {
+    font-size: 28px;
+    color: #323232;
+    margin-bottom: 100px;
+  }
+  .registerSuccessPath {
+    color: #ccc;
+    font-size: 24px;
+    .registerSuccessTimer {
+      color: #ce3b19;
+    }
+  }
 }

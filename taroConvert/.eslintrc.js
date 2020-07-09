@@ -117,12 +117,12 @@ module.exports = {
     'accessor-pairs': 0, //在对象中使用getter/setter
     'block-scoped-var': 0, //块语句中使用var
     'brace-style': [1, '1tbs'], //大括号风格
-    'callback-return': 1, //避免多次调用回调什么的
-    camelcase: 2, //强制驼峰法命名
+    // 'callback-return': 1, //避免多次调用回调什么的
+    // camelcase: 2, //强制驼峰法命名
     // 'comma-dangle': [2, 'never'], //对象字面量项尾不能有逗号
     'comma-spacing': 0, //逗号前后的空格
     'comma-style': [2, 'last'], //逗号风格，换行时在行首还是行尾
-    complexity: [0, 11], //循环复杂度
+    // complexity: [0, 11], //循环复杂度
     'computed-property-spacing': [0, 'never'], //是否允许计算后的键名什么的
     'consistent-return': 0, //return 后面是否允许省略
     'consistent-this': [2, 'that'], //this别名
@@ -155,7 +155,7 @@ module.exports = {
     'object-shorthand': 0, //强制对象字面量缩写语法
     // 'one-var': 1, //连续声明
     'operator-assignment': [0, 'always'], //赋值运算符 += -=什么的
-    'operator-linebreak': [2, 'after'], //换行时运算符在行尾还是行首
+    // 'operator-linebreak': [2, 'after'], //换行时运算符在行尾还是行首
     'padded-blocks': 0, //块语句内行首行尾是否要空行
     'prefer-const': 0, //首选const
     'prefer-spread': 0, //首选展开运算

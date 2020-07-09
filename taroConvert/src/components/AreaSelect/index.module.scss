@@ -1,0 +1,16 @@
+.pickerView {
+  height: 88px;
+  background-color: #f9f9f9;
+  border-radius: 44px;
+  font-size: 28px;
+  padding: 0 40px;
+  .pickerNoVlaue {
+    color: #ccc;
+    height: 88px;
+    line-height: 88px;
+  }
+  .pickerVlaue {
+    height: 88px;
+    line-height: 88px;
+  }
+}

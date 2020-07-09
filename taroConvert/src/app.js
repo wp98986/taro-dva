@@ -7,19 +7,17 @@ import { Provider } from '@tarojs/redux';
 
 import dva from '@/utils/dva';
 import action from '@/utils/action';
-import wxutils from '@/utils/wxutils';
+import { getOpenId } from '@/utils/wxutils';
 import { setGlobalData } from '@/global';
 
 import models from './model';
-
-import './app.scss';
 
 const dvaApp = dva.createApp({
   initialState: {},
   models: models,
   onError(e, dispatch) {
     dispatch(action('sys/error', e));
-  }
+  },
 });
 const store = dvaApp.getStore();
 
@@ -30,20 +28,20 @@ const store = dvaApp.getStore();
       callback: (result) => {
         const { data } = result;
         if (data) {
-          // Taro.setStorageSync('userType', 'designer');
+          Taro.setStorageSync('userType', 'designer');
           Taro.setStorageSync('isAuto', true);
-          this.globalData.currentInfo = data;
+          // this.globalData.currentInfo = data;
           setGlobalData('currentInfo', data);
         } else {
           Taro.setStorageSync('userType', 'visitor');
-          this.globalData.currentInfo = undefined;
+          // this.globalData.currentInfo = undefined;
           setGlobalData('currentInfo', undefined);
         }
       },
     });
   },
 
-  getOpenId() {
+  getOpenIdFun() {
     // 登录
     Taro.login({
       success: (res) => {
@@ -64,30 +62,31 @@ const store = dvaApp.getStore();
     });
 
     // 获取用户信息
-    Taro.getSetting({
-      success: (res) => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          Taro.getUserInfo({
-            success: () => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo;
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res);
-              }
-            },
-          });
-        }
-      },
-    });
+    // Taro.getSetting({
+    //   success: (res) => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       Taro.getUserInfo({
+    //         success: (userRes) => {
+    //           console.log(userRes);
+    //           // 可以将 res 发送给后台解码出 unionId
+    //           this.globalData.userInfo = res.userInfo;
+    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //           // 所以此处加入 callback 以防止这种情况
+    //           if (this.userInfoReadyCallback) {
+    //             this.userInfoReadyCallback(res);
+    //           }
+    //         },
+    //       });
+    //     }
+    //   },
+    // });
   },
 
   onLaunch: function() {
-    const openId = wxutils.getOpenId();
+    const openId = getOpenId();
     if (!openId) {
-      this.getOpenId();
+      this.getOpenIdFun();
     } else {
       this.getCurrentInfo();
     }
@@ -96,6 +95,7 @@ const store = dvaApp.getStore();
     logs.unshift(Date.now());
     Taro.setStorageSync('logs', logs);
   },
+
   globalData: {
     userInfo: null,
   },
@@ -110,14 +110,18 @@ class App extends Taro.Component {
       'pages/homepage/homepage',
       'pages/order/orderlist',
       'pages/my/my',
+      'pages/my/myinfo',
       'pages/login/login',
       'pages/register/register',
+      'pages/register/registerSuccess',
+      'pages/store/storeadd',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '店惠',
       navigationBarTextStyle: 'black',
+      backgroundColor: '#000',
     },
     style: 'v2',
     sitemapLocation: 'sitemap.json',

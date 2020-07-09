@@ -1,0 +1,70 @@
+/* pages/my/my.wxss */
+page {
+  background-color: #fafafa;
+}
+.myPage {
+  .userHead {
+    height: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #fff;
+    .userHeadContent {
+      display: flex;
+      .userHeadName {
+        margin-left: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-size: 28px;
+        color: #323232;
+      }
+      .orgName {
+        color: #ce3b19;
+      }
+    }
+  }
+}
+
+.myInfo {
+  .myInfoCard {
+    .myInfoOrgName {
+      height: 100px;
+      padding: 0 30px;
+      margin-bottom: 8px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      font-size: 32px;
+      color: #323232;
+      .myInfoOrgIcon {
+        width: 46px;
+        height: 46px;
+        margin-right: 24px;
+      }
+    }
+    .viewItem {
+      height: 100px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      font-size: 28px;
+      .viewItemLabel {
+        min-width: 146px;
+        color: #323232;
+        font-weight: bold;
+        margin-right: 65px;
+      }
+      .viewItemText {
+        flex: 1;
+        color: #888;
+      }
+      .viewItemIcon {
+        color: #ce3b19;
+      }
+    }
+  }
+}

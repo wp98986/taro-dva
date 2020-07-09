@@ -90,7 +90,7 @@ export const demo = (data) => {
 fs.mkdirSync(`./src/pages/${dirName}`); // mkdir $1
 process.chdir(`./src/pages/${dirName}`); // cd $1
 
-fs.writeFileSync('index.js', indexTep);
+fs.writeFileSync(`${dirName}.js`, indexTep);
 fs.writeFileSync('index.module.scss', scssTep);
 fs.writeFileSync('model.js', modelTep);
 fs.writeFileSync('service.js', serviceTep);
